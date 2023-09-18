@@ -1,15 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from moving_average import moving_average
-
-#DATA
-stock = pd.read_csv('AAPL.csv')
-comparison = stock['Close'][8:]
+from moving_average import calculate_sma, calculate_ema
+from stock_scrapping import get_stock
+from rsi import calculate_rsi
 
 #SMA
-sma = moving_average(stock, 'simple', 8, 20)
-
+stock_name = 'NVDA'
+stock = get_stock(stock_name, 'US5L2Y3PKRB2AVQO', 'daily', 150)
+sma = calculate_sma(stock, 8, 50)
+ema = calculate_ema(stock, 8, 50)
+rsi = calculate_rsi(stock, 14)
 
 if __name__ == '__main__':
-    print(sma)
+    print(f"The RSI of {stock_name} is {rsi}")

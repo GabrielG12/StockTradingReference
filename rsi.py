@@ -1,4 +1,6 @@
+import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def calculate_rsi(data, window=14):
@@ -15,12 +17,3 @@ def calculate_rsi(data, window=14):
     rsi = 100 - (100 / (1 + rs))
 
     return rsi
-
-
-# Example data (closing prices)
-closing_prices = [50, 51, 52, 48, 49, 47, 45, 46, 47, 48, 50, 51, 52, 50]
-
-# Calculate RSI with a window of 14 periods
-rsi = calculate_rsi(closing_prices, window=14)
-
-print("RSI:", rsi)
